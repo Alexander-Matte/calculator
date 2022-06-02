@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+#calcContainer {
+    width: 650px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.displayContainer {
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 150px;
+    background-color: brown;
+
+}
+
+.buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.boxes {
+    border: 1.5px solid black;
+    flex: 1;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer hr {
+    flex-basis: 100%;
+    height: 0; 
+    margin: 0; 
+    border: 0; 
+}
