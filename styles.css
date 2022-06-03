@@ -2,11 +2,19 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+
+
+}
+
 #calcContainer {
-    width: 650px;
-    height: 800px;
+    width: 450px;
+    height: 600px;
     display: flex;
     flex-direction: column;
+    background-color: lightseagreen;
 
 
 }
@@ -16,30 +24,29 @@
     padding: 15px;
     justify-content: center;
     align-items: center;
-    flex-basis: 150px;
+    flex-grow: 1;
     background-color: brown;
 
 }
 
 .buttonContainer {
     display: flex;
-    flex-wrap: wrap;
-
-
+    flex: 4;
 }
 
-.boxes {
-    border: 1.5px solid black;
+.row {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    height: 130px;
+}
+
+.btn {
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.buttonContainer hr {
-    flex-basis: 100%;
-    height: 0; 
-    margin: 0; 
-    border: 0; 
+.equalBtn {
+    flex-grow: 2;
 }
