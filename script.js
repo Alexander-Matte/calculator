@@ -4,6 +4,12 @@ let displayField = document.querySelector(".mainDisplay");
 let divs = document.querySelectorAll(".btn");
 let displayNumber;
 
+let values = {
+  "value1": "",
+  "operator": "",
+  "value2": ""
+};
+
 
 // 7)When the user presses an operator, you have to store the first value and which operator was selected. Lastly you have to run the 
 //operate() function when user presses the equals (=) key.
@@ -15,8 +21,32 @@ divsArray = Array.from(divs);
 divsArray.forEach((el) => {
   // listen for a click and save text content as value
   el.addEventListener("click", (event) => {
-    displayField.textContent= event.target.textContent;
-  })
+    displayField.textContent = event.target.textContent;
+ 
+    
+    if((values.value1 !== "") && (values.operator !== "") && (event.target.className === "btn num")){
+      values.value2 += event.target.textContent;
+    }else if((values.value1 !== "") && (event.target.className === "btn")){
+      values.operator = event.target.textContent;
+    }else if(event.target.className === "btn num") {
+      values.value1 += event.target.textContent;
+      
+    };
+
+    if((event.target.className === "btn equalBtn") && (values.value1 !== "") && (values.value2 !== "") && (values.operator !== "")) {
+      operate(values.operator, Number(values.value1), Number(values.value2));
+      clear(values);
+    };
+
+
+
+    console.log(values);
+
+
+
+
+
+  });
 });
 
 
@@ -80,3 +110,8 @@ function operate (operator, num1, num2){
 };
 
 
+function clear(obj){
+  obj.value1 = "";
+  obj.value2 = "";
+  obj.operator = "";
+};
