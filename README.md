@@ -1,1 +1,2 @@
-# calculator
+First attempt at creating a calculator app using vanilla javaScript. This app is being created at the end of The Odin Projects Fundamental course.
+https://www.theodinproject.com/lessons/foundations-calculator
