@@ -22,7 +22,7 @@ body {
 .displayContainer {
     display: flex;
     padding: 15px;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     flex-grow: 1;
     background-color: brown;
