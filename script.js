@@ -14,19 +14,16 @@ let values = {
   "value2": ""
 };
 
-let runningTotal = [];
-
-
-
 /*     Created a boolean,and put its value to false.
 Looped over the numbers
 If, the boolean value is true, store the number in the second variable
 Else, store the number in the first variable. (Since the boolean will 
 remain false for the first variable, the number is going to store in the first variable by default) */
 hasValues = false;
-
 numArray = Array.from(numDivs);
 opArray = Array.from(opDivs);
+
+
 // Adds eventlistener to each numbers button and saves values in object
 numArray.forEach(Element => {
   Element.addEventListener("click", (event) => {
@@ -38,11 +35,12 @@ numArray.forEach(Element => {
       values.value1 += event.target.textContent;
       displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
     };
-    console.log(values);
-    console.log(runningTotal);
+  //space for console.log if needed to troubleshoot
   });
 });
-//Adds eventlistener to ever operator button and performs operations simultaneously 
+
+
+//Adds eventlistener to every operator button and performs operations simultaneously 
 opArray.forEach(element => {
   element.addEventListener("click", (event) => {
     if (!hasValues) {
@@ -52,14 +50,14 @@ opArray.forEach(element => {
 
     } else {
       operate(values.operator, Number(values.value1), Number(values.value2));
-      displayField.textContent = values.value1;
       values.operator = event.target.textContent;
-      updatingDisplay.textContent = values.operator;
+      displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
     };
-    console.log(values);
-    console.log(runningTotal);
+  //space for console.log if needed to troubleshoot
   }) 
 });
+
+
 //Listens for click on equal button.
 eqlBtn.addEventListener("click", (event) => {
   if (hasValues && (values.value2 !== "")) {
@@ -68,9 +66,9 @@ eqlBtn.addEventListener("click", (event) => {
     displayField.textContent = values.value1;
   };
   updatingDisplay.textContent = "";
-  console.log(values);
-  console.log(runningTotal);
 });
+
+
 //Listens for click on Clear button,
 clrBtn.addEventListener("click", (event) => {
   clear(values);
@@ -78,25 +76,25 @@ clrBtn.addEventListener("click", (event) => {
   runningTotal = [];
   hasValues = false;
   updatingDisplay.textContent = "";
-  console.log(values);
-  console.log(runningTotal);
 });
+
+
 //Listens for clicks on Delete button.
 deleteBtn.addEventListener("click", (event) => {
-  if ((hasValues) && (values.operator !== "")) {
-    values.value2 = values.value2.slice(0,-1);
-    console.log(values.value2);
-    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;    
-    
-  } else if((hasValues) && (values.value2 === "")) {
-    values.operator = "";
-    console.log(values.operator);
-    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
-    
-  } else if ((values.operator === "") && (values.value2 === "")) {
+  if ((values.value2 === "") && (values.operator === "")) {
     values.value1 = values.value1.slice(0,-1);
-    console.log(values.value1);
-    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2; 
+    if(values.value1 === ""){
+      hasValues = false;
+    };
+    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
+  } else if ((values.value2 === "") && (values.operator !== "")) {
+    values.operator = "";
+    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
+
+    
+  } else {
+    values.value2 = values.value2.slice(0,-1);
+    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
 
   }
 })
@@ -118,9 +116,8 @@ deleteBtn.addEventListener("click", (event) => {
 //1) create functions that take two numbers as args and add, subtract, multiply or divide them.
 function add(num1, num2){
     let result = num1 + num2;
-    console.log(result);
+    result = roundToTen(result);
     result = result.toString();
-    runningTotal.push(result);
     clear(values);
     values.value1 = result;
     hasValues = true;
@@ -129,9 +126,8 @@ function add(num1, num2){
 
 function subtract(num1, num2){
     let result =  num1 - num2;
-    console.log(result);
+    result = roundToTen(result);
     result = result.toString();
-    runningTotal.push(result);
     clear(values);
     values.value1 = result;
     hasValues = true;
@@ -140,9 +136,8 @@ function subtract(num1, num2){
 
 function multiply(num1, num2){
     let result =  num1 * num2;
-    console.log(result);
+    result = roundToTen(result);
     result = result.toString();
-    runningTotal.push(result);
     clear(values);
     values.value1 = result;
     hasValues = true;
@@ -157,9 +152,8 @@ function divide(num1, num2){
       
     } else {
       let result =  num1 / num2;
-      console.log(result);
+      result = roundToTen(result);
       result = result.toString();
-      runningTotal.push(result);
       clear(values);
       values.value1 = result;
       hasValues = true;
@@ -171,14 +165,25 @@ function divide(num1, num2){
 
 function percentage(num1, num2){
     let result = (num1/ 100) * num2;
-    console.log(result);
+    result = roundToTen(result);
     result = result.toString();
-    runningTotal.push(result);
     clear(values);
     values.value1 = result;
     hasValues = true;
     displayField.textContent = result;
 };
+
+
+function clear(obj){
+  obj.value1 = "";
+  obj.value2 = "";
+  obj.operator = "";
+};
+
+//rounds to the tenth decimal if necessary 
+function roundToTen(num) {
+  return +(Math.round(num + "e+10")  + "e-10");
+}
 
 
 //2) create a new operate function that takes 3 args. An operator and two numbers. This function will then evoke functions
@@ -215,9 +220,3 @@ function operate (operator, num1, num2){
       
 };
 
-
-function clear(obj){
-  obj.value1 = "";
-  obj.value2 = "";
-  obj.operator = "";
-};
