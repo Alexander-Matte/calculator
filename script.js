@@ -6,6 +6,7 @@ let opDivs = document.querySelectorAll(".op");
 let eqlBtn = document.querySelector(".equalBtn");
 let updatingDisplay = document.querySelector(".updatingDisplay");
 let clrBtn = document.querySelector(".clear");
+let deleteBtn = document.querySelector(".delete");
 
 let values = {
   "value1": "",
@@ -80,6 +81,27 @@ clrBtn.addEventListener("click", (event) => {
   console.log(values);
   console.log(runningTotal);
 });
+//Listens for clicks on Delete button.
+deleteBtn.addEventListener("click", (event) => {
+  if ((hasValues) && (values.operator !== "")) {
+    values.value2 = values.value2.slice(0,-1);
+    console.log(values.value2);
+    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;    
+    
+  } else if((hasValues) && (values.value2 === "")) {
+    values.operator = "";
+    console.log(values.operator);
+    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
+    
+  } else if ((values.operator === "") && (values.value2 === "")) {
+    values.value1 = values.value1.slice(0,-1);
+    console.log(values.value1);
+    displayField.textContent = values.value1 + " " + values.operator + " " + values.value2; 
+
+  }
+})
+
+
 
 
 
@@ -97,6 +119,7 @@ clrBtn.addEventListener("click", (event) => {
 function add(num1, num2){
     let result = num1 + num2;
     console.log(result);
+    result = result.toString();
     runningTotal.push(result);
     clear(values);
     values.value1 = result;
@@ -107,6 +130,7 @@ function add(num1, num2){
 function subtract(num1, num2){
     let result =  num1 - num2;
     console.log(result);
+    result = result.toString();
     runningTotal.push(result);
     clear(values);
     values.value1 = result;
@@ -117,6 +141,7 @@ function subtract(num1, num2){
 function multiply(num1, num2){
     let result =  num1 * num2;
     console.log(result);
+    result = result.toString();
     runningTotal.push(result);
     clear(values);
     values.value1 = result;
@@ -125,18 +150,29 @@ function multiply(num1, num2){
 };
 
 function divide(num1, num2){
-    let result =  num1 / num2;
-    console.log(result);
-    runningTotal.push(result);
-    clear(values);
-    values.value1 = result;
-    hasValues = true;
-    displayField.textContent = result;
+    if (num2 === 0) {
+      alert("YOU SHALL NOT DIVIDE BY ZERO!")
+      clear(values);
+      displayField.textContent = "";
+      
+    } else {
+      let result =  num1 / num2;
+      console.log(result);
+      result = result.toString();
+      runningTotal.push(result);
+      clear(values);
+      values.value1 = result;
+      hasValues = true;
+      displayField.textContent = result;
+      
+    }
+
 };
 
 function percentage(num1, num2){
     let result = (num1/ 100) * num2;
     console.log(result);
+    result = result.toString();
     runningTotal.push(result);
     clear(values);
     values.value1 = result;
