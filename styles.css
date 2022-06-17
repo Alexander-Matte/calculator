@@ -21,13 +21,16 @@ body {
 
 .displayContainer {
     display: flex;
+    flex-direction: column;
     padding: 15px;
-    justify-content: end;
-    align-items: center;
+    justify-content: space-around;
+    align-items: end;
     flex-grow: 1;
     background-color: brown;
 
 }
+
+
 
 .buttonContainer {
     display: flex;
