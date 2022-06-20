@@ -4,9 +4,9 @@ let displayField = document.querySelector(".mainDisplay");
 let numDivs = document.querySelectorAll(".num");
 let opDivs = document.querySelectorAll(".op");
 let eqlBtn = document.querySelector(".equalBtn");
-let updatingDisplay = document.querySelector(".updatingDisplay");
 let clrBtn = document.querySelector(".clear");
 let deleteBtn = document.querySelector(".delete");
+displayField.style.color = "lightgray";
 
 let values = {
   "value1": "",
@@ -32,8 +32,10 @@ numArray.forEach(Element => {
       values.value2 += event.target.textContent;
       displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
     }else {
-      values.value1 += event.target.textContent;
-      displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
+        values.value1 += event.target.textContent;
+        displayField.textContent = values.value1 + " " + values.operator + " " + values.value2;
+      
+
     };
   //space for console.log if needed to troubleshoot
   });
@@ -201,12 +203,12 @@ function operate (operator, num1, num2){
           //result of expression matches "-"
           subtract(num1, num2);
           break;
-        case "*":
+        case "x":
           //Statements executed when the
           //result of expression matches "*"
           multiply(num1, num2);
           break;
-        case "/":
+        case "÷":
           //Statements executed when the
           //result of expression matches "/"
           divide(num1, num2);
