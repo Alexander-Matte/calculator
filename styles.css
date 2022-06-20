@@ -14,7 +14,9 @@ body {
     height: 600px;
     display: flex;
     flex-direction: column;
-    background-color: lightseagreen;
+    background-color: black;
+    overflow:hidden;
+    border-radius: 30px;
 
 
 }
@@ -26,7 +28,7 @@ body {
     justify-content: space-around;
     align-items: end;
     flex-grow: 1;
-    background-color: brown;
+    background-color: black;
 
 }
 
@@ -41,6 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
+    border-right: 1px solid lightgray;
 }
 
 .btn {
@@ -48,8 +51,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top: 0.5px solid grey;
+    font-size: large;
 }
 
 .equalBtn {
     flex-grow: 2;
+    background-color: #0793ff;
+    color: white;
 }
+
+.num, #percent {
+    color: lightgray;
+    background-color: black;
+}
+
+
+.op, .clear, .delete {
+    background-color: rgb(35, 36, 36);
+    color: #00b3fc;
+    font-size: large;
+
+}
+
+
