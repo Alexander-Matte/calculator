@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Calculator</title>
 </head>
 <body>
@@ -14,7 +15,6 @@ and a clear button. -->
 <div id="calcContainer">
     <div class="displayContainer">
         <div class="mainDisplay"></div>
-        <div class="updatingDisplay"></div>
     </div>
     <div class="buttonContainer">
         <div class="row">
@@ -22,24 +22,24 @@ and a clear button. -->
             <div class="btn num">7</div>
             <div class="btn num">4</div>
             <div class="btn num">1</div>
-            <div class="btn op">%</div>
+            <div class="btn op" id="percent">%</div>
         </div>
         <div class="row">
-            <div class="btn op">/</div>
+            <div class="btn op">÷</div>
             <div class="btn num">8</div>
             <div class="btn num">5</div>
             <div class="btn num">2</div>
             <div class="btn num">0</div>
         </div>
         <div class="row">
-            <div class="btn op">*</div>
+            <div class="btn op">x</div>
             <div class="btn num">9</div>
             <div class="btn num">6</div>
             <div class="btn num">3</div>
             <div class="btn num">.</div>
         </div>
         <div class="row">
-            <div class="btn delete">Delete</div>
+            <div class="btn delete"><span class="material-symbols-outlined" style="font-size: 35px;" >backspace</span></div>
             <div class="btn op">-</div>
             <div class="btn op">+</div>
             <div class="btn equalBtn">=</div>
